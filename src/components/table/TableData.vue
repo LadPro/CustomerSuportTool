@@ -5,7 +5,7 @@
                     <th class="table-auto px-4 py-2">
                         <input type="checkbox">
                     </th>   
-                    <th v-for="element in store.userTable" :key="element.name" class="capitalize" :class="{invisible: !element.visible}">{{element.name}}</th>   
+                    <th v-for="(element, index) in store.userTable" :key="index" class="capitalize" :class="{hidden: !element.visible}">{{element.name}}</th>   
                 </tr>
                 </thead>
                 <tbody class="">
@@ -13,9 +13,9 @@
                         <td class="table-auto px-4">
                             <input type="checkbox">
                         </td>
-                        <td v-for="(element) in store.userTable" :key="element.name" :class="{invisible: !element.visible}"> 
-                            <span v-if="element.name=='historial de contacto'" class="text-center"><button>view</button> </span>
-                            <span v-else>{{client[element.name]}} </span>
+                        <td v-for="(element, index) in store.userTable" :key="index" :class="{hidden: !element.visible}"> 
+                            <span v-if="index=='historial'" class="text-center"><button>view</button> </span>
+                            <span v-else>{{client[index]}} </span>
                         </td> 
                     </tr>
                 </tbody>

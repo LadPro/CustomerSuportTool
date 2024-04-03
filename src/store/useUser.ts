@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { IUserTableItem, IUserData, IUserDataItem, IUserStore} from '@/interfaces/IData'
+import { IUserStore} from '@/interfaces/IData'
 
 export const useUser = defineStore('user',{
     state: ():IUserStore =>({
@@ -26,8 +26,8 @@ export const useUser = defineStore('user',{
                 'correo': 'nagas@gmail.com',
                 'motivo': 'desea atencion inmediata porque si',
                 'estado': 'salvaje',
-                'fecha ultimo contacto': "10.10.2010",
-                'historial de contacto': {
+                'fecha': "10.10.2010",
+                'historial': {
                 '10.10.2010':'se cago en todo',
                 '11.10.2010':'no se cago en todo',
                 '12.10.2010':'tal vez se cago en todo',
@@ -38,8 +38,8 @@ export const useUser = defineStore('user',{
                 'correo': 'nagas@gmail.com',
                 'motivo': 'desea atencion inmediata porque si',
                 'estado': 'salvaje',
-                'fecha ultimo contacto': "10.10.2010",
-                'historial de contacto': {
+                'fecha': "10.10.2010",
+                'historial': {
                 '10.10.2010':'se cago en todo',
                 '11.10.2010':'no se cago en todo',
                 '12.10.2010':'tal vez se cago en todo',
@@ -50,8 +50,8 @@ export const useUser = defineStore('user',{
                 'correo': 'nagas@gmail.com',
                 'motivo': 'desea atencion inmediata porque si',
                 'estado': 'salvaje',
-                'fecha ultimo contacto': "10.10.2010",
-                'historial de contacto': {
+                'fecha': "10.10.2010",
+                'historial': {
                 '10.10.2010':'se cago en todo',
                 '11.10.2010':'no se cago en todo',
                 '12.10.2010':'tal vez se cago en todo',
@@ -62,8 +62,8 @@ export const useUser = defineStore('user',{
                 'correo': 'nagas@gmail.com',
                 'motivo': 'desea atencion inmediata porque si',
                 'estado': 'salvaje',
-                'fecha ultimo contacto': "10.10.2010",
-                'historial de contacto': {
+                'fecha': "10.10.2010",
+                'historial': {
                 '10.10.2010':'se cago en todo',
                 '11.10.2010':'no se cago en todo',
                 '12.10.2010':'tal vez se cago en todo',
@@ -74,8 +74,8 @@ export const useUser = defineStore('user',{
                 'correo': 'nagas@gmail.com',
                 'motivo': 'desea atencion inmediata porque si',
                 'estado': 'salvaje',
-                'fecha ultimo contacto': "10.10.2010",
-                'historial de contacto': {
+                'fecha': "10.10.2010",
+                'historial': {
                 '10.10.2010':'se cago en todo',
                 '11.10.2010':'no se cago en todo',
                 '12.10.2010':'tal vez se cago en todo',
@@ -86,8 +86,8 @@ export const useUser = defineStore('user',{
                 'correo': 'nagas@gmail.com',
                 'motivo': 'desea atencion inmediata porque si',
                 'estado': 'salvaje',
-                'fecha ultimo contacto': "10.10.2010",
-                'historial de contacto': {
+                'fecha': "10.10.2010",
+                'historial': {
                 '10.10.2010':'se cago en todo',
                 '11.10.2010':'no se cago en todo',
                 '12.10.2010':'tal vez se cago en todo',
@@ -95,4 +95,22 @@ export const useUser = defineStore('user',{
             }},
 ]}
     }),
+    actions:{
+        changeVisivility(item:string){ 
+            this.userTable[item].visible = !this.userTable[item].visible
+        },
+        createTableItem(name:string){
+            let repairname = name.split(" ")[0]
+            let i = 1
+            while (repairname in this.userTable){
+                repairname = `${repairname}${i}`
+                i++
+            }
+            this.userTable[repairname] = {name: name, visible: true}
+        }
+    },
+  persist: {
+    storage: sessionStorage,
+    paths: ['userTable', "userData"],
+  },
 })

@@ -10,6 +10,7 @@
                 <button>Send Emails</button>
                 <button>Send messages</button>
                 <button>bulk Clients</button>
+                <button>Edit table</button>
             </div>
         </div>
         <div class="botonera flex gap-3">
@@ -24,7 +25,6 @@
 </template>
 
 <script lang="ts" setup>
-import BodyRow from "@/components/table/BodyRow.vue"
 import TableData from "@/components/table/TableData.vue"
 </script>
 

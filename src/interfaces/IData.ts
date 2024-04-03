@@ -9,8 +9,8 @@ export interface IUserDataItem {
   correo: string;
   motivo: string;
   estado: string;
-  'fecha ultimo contacto': string;
-  'historial de contacto': Record<string, string>;
+  fecha: string;
+  historial: Record<string, string>;
   [key: string]: string | Record<string, string>;
 }
 
