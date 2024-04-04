@@ -5,19 +5,33 @@ export const useUser = defineStore('user',{
     state: ():IUserStore =>({
             userTable :{
                 'nombre': {name: 'nombre',
-                        visible:true},
+                        visible:true,
+                        prevalues:[],
+                        useprevalues:false},
                 'numero': {name: 'numero',
-                        visible:true},
+                        visible:true,
+                        prevalues:[],
+                        useprevalues:false},
                 'correo': {name: 'correo',
-                        visible:true},
+                        visible:true,
+                        prevalues:[],
+                        useprevalues:false},
                 'motivo': {name: 'motivo',
-                        visible:true},
+                        visible:true,
+                        prevalues:[],
+                        useprevalues:false},
                 'estado': {name: 'estado',
-                        visible:true},
+                        visible:true,
+                        prevalues:[],
+                        useprevalues:false},
                 'fecha': {name: 'fecha ultimo contacto',
-                        visible:true},
+                        visible:true,
+                        prevalues:[],
+                        useprevalues:false},
                 'historial': {name: 'historial de contacto',
-                        visible:true}
+                        visible:true,
+                        prevalues:[],
+                        useprevalues:false}
 
             },
             userData: {user: [
@@ -99,14 +113,17 @@ export const useUser = defineStore('user',{
         changeVisivility(item:string){ 
             this.userTable[item].visible = !this.userTable[item].visible
         },
-        createTableItem(name:string){
-            let repairname = name.split(" ")[0]
+        createTableItem(name:string, prevalues:Array<string>=[], useprevalues=false ){
+            let keyname = name.split(" ")[0]
             let i = 1
-            while (repairname in this.userTable){
-                repairname = `${repairname}${i}`
+            while (keyname in this.userTable){
+                keyname = `${keyname}${i}`
                 i++
             }
-            this.userTable[repairname] = {name: name, visible: true}
+            this.userTable[keyname] = {name: name, visible: true, prevalues : prevalues, useprevalues : useprevalues}
+        },
+        editTableItem(indice: string, name:string, prevalues:Array<string>=[], useprevalues=false ){
+           this.userTable[indice] = {name: name, visible: true, prevalues: prevalues, useprevalues: useprevalues}
         }
     },
   persist: {

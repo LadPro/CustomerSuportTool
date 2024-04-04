@@ -1,6 +1,8 @@
 export interface IUserTableItem {
   name: string;
   visible: boolean;
+  prevalues: Array<string>,
+  useprevalues: boolean
 }
 
 export interface IUserDataItem {
